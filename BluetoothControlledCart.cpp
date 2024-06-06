@@ -3,12 +3,12 @@
 //USAR PINOS CONFORME ENDEREÇAMENTO ABAIXO
 
 //Definição do uso dos pinos do Arduino
-#define pinMotor1A     11 //vd
-#define pinMotor1B     10 //az
-#define pinMotor2A     9  //br
-#define pinMotor2B     6  //cz
+#define pinMotor1A     2 //vd
+#define pinMotor1B     3 //az
+#define pinMotor2A     5 //br
+#define pinMotor2B     4 //cz
 
-#define pinBtRx        8  //vd
+#define pinBtRx        6  //vd
 #define pinBtTx        7  //az
 
 //Biblioteca para comunicação com módulo Bluetooth
@@ -27,9 +27,7 @@ void setup() {
   pinMode(pinMotor1B, OUTPUT);
   pinMode(pinMotor2A, OUTPUT);
   pinMode(pinMotor2B, OUTPUT);
-  digitalWrite(13, LOW);
-  digitalWrite(2, LOW);
-  digitalWrite(3, LOW);
+  
 
 
   //Inicia a comunicação serial para monitorar o que está acontecendo pelo monitor serial
@@ -58,21 +56,21 @@ char recebido;
        digitalWrite(pinMotor2B, LOW);
     }
 
-     else if (recebido == 'B') {   // PARADO
+     else if (recebido == 'B') {   // MOVIMENTO PARA TRÁS (RÉ)
      
        digitalWrite(pinMotor1A, LOW);
        digitalWrite(pinMotor1B, HIGH);
        digitalWrite(pinMotor2A, LOW);
        digitalWrite(pinMotor2B, HIGH);
 
-     }else if (recebido == 'L') {   // PARADO
+     }else if (recebido == 'L') {   // MOVIMENTO PARA ESQUERDA
      
        digitalWrite(pinMotor1A, LOW);
        digitalWrite(pinMotor1B, LOW);
        digitalWrite(pinMotor2A, HIGH);
        digitalWrite(pinMotor2B, LOW);
 
-     }  else if (recebido == 'R') {   // PARADO
+     }  else if (recebido == 'R') {   // MOVIMENTO PARA DIREITA 
      
        digitalWrite(pinMotor1A, HIGH);
        digitalWrite(pinMotor1B, LOW);
@@ -91,5 +89,4 @@ char recebido;
     } 
     
 }
-
   
